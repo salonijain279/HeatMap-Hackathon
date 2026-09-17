@@ -96,6 +96,16 @@ Builds and analyses the multi-hop referral chain: Local Hospital → Trauma Cent
 
 ## Methodology
 
+```mermaid
+flowchart LR
+    A[635 hospitals, NIRD dataset] --> B[Geocode by ZIP]
+    B --> C[Haversine distance to burn centers]
+    C --> D[Referral pressure ratio by state]
+    D --> E[4-tier pathway classification]
+    E --> F[Urgency scoring: HIGH/MEDIUM/LOW]
+    F --> G[Referral chain & bottleneck index]
+```
+
 ### 1. Geocoding
 All 635 hospitals geocoded by 5-digit ZIP code using `pgeocode` (Nominatim US database). Coordinates stored as `lat`/`lon`.
 
